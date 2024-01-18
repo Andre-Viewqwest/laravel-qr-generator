@@ -27,7 +27,7 @@ class QrCodeStaticGenerator extends Controller
             $md5_checksum = md5($data_to_hash);
     
             // Build the request parameters
-            $apiUrl = env('RAZER_API_GENERATE_STATIC');
+            $apiUrl = env('RAZER_API_QR_CODE_STATIC_GENERATOR');
             $queryParams = [
                 'merchantID' => $merchantID,
                 'channel' => $channel,

@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/generate-qr-code-static', [QrCodeStaticGenerator::class, 'generateQrCodeStatic']);
+Route::get('/generate-qr-code-static', [QrCodeStaticGenerator::class, 'qrCodeStaticGenerator']);

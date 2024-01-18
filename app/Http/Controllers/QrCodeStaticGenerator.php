@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class QrCodeStaticGenerator extends Controller
 {
     //
-    public function generateQrCodeStatic()
+    public function qrCodeStaticGenerator()
     {
         try {
             // Replace these values with your actual data
@@ -27,7 +27,7 @@ class QrCodeStaticGenerator extends Controller
             $md5_checksum = md5($data_to_hash);
     
             // Build the request parameters
-            $apiUrl = env('RAZER_API');
+            $apiUrl = env('RAZER_API_GENERATE_STATIC');
             $queryParams = [
                 'merchantID' => $merchantID,
                 'channel' => $channel,

@@ -15,12 +15,12 @@ class QrCodeStaticGenerator extends Controller
             // Replace these values with your actual data
             $merchantID = env('RAZER_MERCHANT_ID');
             $channel = "AlipaySQR";
-            $orderid = "IDTEST2";
+            $orderid = "S001";
             $currency = "MYR";
             $amount = "1";
             $verify_key = env('RAZER_VERIFICATION_KEY');
-            $bill_name = "SB_ViewQwest";
-            $bill_desc = "test";
+            $bill_name = "VIEWQWEST";
+            $bill_desc = "test item";
     
             // Calculate MD5 checksum
             $data_to_hash = $merchantID . $channel . $orderid . $currency . $amount . $verify_key . $bill_name . $bill_desc;

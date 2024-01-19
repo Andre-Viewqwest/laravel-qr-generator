@@ -24,7 +24,7 @@ class ChannelStatusApiController extends Controller
             $hmac_sha256 = hash_hmac('sha256', $data_to_hash, $skey);
         
             // Build the request parameters
-            $apiUrl = "https://pay.merchant.razer.com/RMS/API/chkstat/channel_status.php";
+            $apiUrl = "https://sandbox.merchant.razer.com/RMS/API/chkstat/channel_status.php";
             $postData = [
                 'merchantID' => $merchantID,
                 'datetime' => $dateTime,

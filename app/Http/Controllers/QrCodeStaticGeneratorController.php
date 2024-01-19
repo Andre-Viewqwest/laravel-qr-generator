@@ -17,13 +17,13 @@ class QrCodeStaticGeneratorController extends Controller
         try {
             // Replace these values with your actual data
             $merchantID = "SB_ViewQwest";
-            $channel = "WeChatPaySQR";
-            $orderid = "S001";
+            $channel = "AlipaySQR";
+            $orderid = "S000001";
             $currency = "MYR";
-            $amount = 1;
+            $amount = 500;
             $verify_key = 'f35e1e6394091c1dc83881640364b215';
-            $bill_name = "VIEW QWEST";
-            $bill_desc = "test item";
+            $bill_name = "VIEWQWEST";
+            $bill_desc = "testitem";
 
             $checksumString = $merchantID . $channel . $orderid . $currency . $amount . $verify_key;
             $checksum = md5($checksumString);
@@ -41,11 +41,12 @@ class QrCodeStaticGeneratorController extends Controller
                 'bill_desc' => $bill_desc,
                 'checksum' => $checksum,
             ];
-
+            
             // Make the API request using Guzzle
             $client = new Client(); // Use the full namespace here
             $response = $client->get($apiUrl, ['query' => $queryParams]);
-        
+            // $response = $client->get($apiUrl, ['form_params' => $queryParams]);
+
             // Handle the API response as needed
             $apiResponse = $response->getBody()->getContents();
         

@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\QrCodeStaticGenerator;
+use App\Http\Controllers\QrCodeStaticGeneratorController;
+use App\Http\Controllers\ChannelStatusApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/generate-qr-code-static', [QrCodeStaticGenerator::class, 'qrCodeStaticGenerator']);
+Route::post('/generate-qr-code-static', [QrCodeStaticGeneratorController::class, 'qrCodeStaticGenerator']);
+Route::post('/channel-status', [ChannelStatusApiController::class, 'checkChannelStatus']);

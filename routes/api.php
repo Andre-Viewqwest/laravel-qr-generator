@@ -3,8 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\QrCodeStaticGeneratorController;
-use App\Http\Controllers\ChannelStatusApiController;
+// use App\Http\Controllers\QrCodeStaticGeneratorController;
+// use App\Http\Controllers\ChannelStatusApiController;
+
+use App\Http\Controllers\QRCodeInvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +19,9 @@ use App\Http\Controllers\ChannelStatusApiController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 
-Route::get('/generate-qr-code-static', [QrCodeStaticGeneratorController::class, 'qrCodeStaticGenerator']);
-Route::post('/channel-status', [ChannelStatusApiController::class, 'checkChannelStatus']);
+Route::get('generate-invoice-qr-code/{id}', [QRCodeInvoiceController::class, 'generateInvoiceQrCode']);

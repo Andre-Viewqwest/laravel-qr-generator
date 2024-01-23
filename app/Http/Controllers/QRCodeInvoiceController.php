@@ -35,6 +35,7 @@ class QRCodeInvoiceController extends Controller
             return response('Error generating QR code', 500);
         }
 
+        // Generate png
         // try {
         //     $molpayApiKey = env('MOLPAY_API');
 
@@ -59,6 +60,6 @@ class QRCodeInvoiceController extends Controller
     }
 
     public function showqr(){
-        
+
     }
 }

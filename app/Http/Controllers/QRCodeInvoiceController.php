@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
-<<<<<<< Updated upstream
-use Illuminate\Support\Facades\Response;
-=======
 use Illuminate\Support\Facades\Storage;
->>>>>>> Stashed changes
 
 class QRCodeInvoiceController extends Controller
 {
@@ -23,20 +18,22 @@ class QRCodeInvoiceController extends Controller
             // Generate QR code
             $qrCode = QrCode::size(300)->generate($link);
 
+            // Convert the QR code image to base64
+            $base64Image = base64_encode($qrCode);
+
             // Generate a unique filename for the QR code image
-            $filename = 'qrcode_' . $id . '.png';
+            $filename = 'qrcode_' . $id . '.txt'; // Use .txt extension for base64 data
 
-            // Save the image to the specified file path
+            // Save the base64-encoded string to the specified file path in the local storage
             $filePath = 'public/' . $filename;
-            Storage::put($filePath, $qrCode);
+            Storage::put($filePath, $base64Image);
 
-            return 'QR code generated and saved successfully!';
+            // Return the path to the saved file
+            return response()->json(['file_path' => $filePath, 'message' => 'Base64 data saved as a file successfully']);
         }catch (\Exception $e) {
             // Log or handle the exception
             return response('Error generating QR code', 500);
         }
-
-
 
         // try {
         //     $molpayApiKey = env('MOLPAY_API');
@@ -59,5 +56,9 @@ class QRCodeInvoiceController extends Controller
         //     // Log or handle the exception
         //     return response('Error generating QR code', 500);
         // }
+    }
+
+    public function showqr(){
+        
     }
 }
